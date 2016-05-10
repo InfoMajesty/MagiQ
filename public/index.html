@@ -1,0 +1,91 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html ng-app="app">
+<head>
+	<!-- META -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+	<title>MagiQ Clients</title>
+
+	<!-- SCROLLS -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	<style>
+		html 					{ overflow-y:scroll; }
+		body 					{ padding-top:50px; }
+		#todo-list 				{ margin-bottom:30px; }
+		#todo-form 	 			{ margin-bottom:50px; }
+	</style>
+
+	<!-- SPELLS -->
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
+
+	<script src="js/controllers/main.js"></script> <!-- load up our controller -->
+	<script src="js/services/clients.js"></script> <!-- load our todo service -->
+
+
+</head>
+<!-- SET THE CONTROLLER -->
+<body ng-controller="mainController">
+	<div class="container">
+		My Test Var value: {{MyVar}}
+		<!-- HEADER AND TODO COUNT -->
+		<div class="jumbotron text-center">
+			<h1>List of Clients <span class="label label-info">{{ clientList.length }}</span></h1>
+		</div>
+
+		<!-- Client LIST -->
+		<div id="client-list" class="row">
+			<div class="col-sm-4 col-sm-offset-4">
+
+				<div class="checkbox" ng-repeat="client in clientList">
+					<label>
+						Name: {{client.clientname}}
+					</label>
+					<lable>
+						Database: {{client.databasename}}
+					</lable>
+				</div>
+
+				<p class="text-center" ng-show="loading">
+					<span class="fa fa-spinner fa-spin fa-3x"></span>
+				</p>
+
+			</div>
+		</div>
+
+		<!-- FORM TO CREATE TODOS -->
+		<div id="todo-form" class="row">
+			<div class="col-sm-8 col-sm-offset-2 text-center">
+				<form>
+					<div class="form-group">
+
+						<!-- BIND THIS VALUE TO formData.clientname IN ANGULAR -->
+						Clientname:
+						<input type="text" class="form-control input-lg text-center" placeholder="Specify name of the client" ng-model="formData.clientname">
+
+						Databasename:
+						<input type="text" class="form-control input-lg text-center" placeholder="Specify name of the client" ng-model="formData.databasename">
+
+						Username:
+						<input type="text" class="form-control input-lg text-center" placeholder="Specify name of the client" ng-model="formData.username">
+
+						Password:
+						<input type="text" class="form-control input-lg text-center" placeholder="Specify name of the client" ng-model="formData.password">
+
+					</div>
+
+					<!-- createToDo() WILL CREATE NEW TODOS -->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="createClient()">Add</button>
+				</form>
+			</div>
+		</div>
+
+
+
+	</div>
+
+</body>
+</html>

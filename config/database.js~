@@ -1,0 +1,10 @@
+// config/database.js
+module.exports = {
+    'connection': {
+        'host': 'magiq-config.cfgrdivtnalt.us-west-2.rds.amazonaws.com',
+        'user': 'root',
+        'password': 'password'
+    },
+	'database': 'users',
+    'users_table': 'users'
+};
